@@ -7,7 +7,7 @@ OPT := --to slides --SlidesExporter.reveal_width=1000 --SlidesExporter.reveal_nu
 .PHONY: convert
 convert:
 	@mkdir -p $(DEST_DIR)
-	@for file in $(SRC_DIR)/*.ipynb; do \
+	@for file in $(SRC_DIR)/julia-*.ipynb; do \
 		echo "Converting $$file to HTML..."; \
 		jupyter nbconvert $(OPT) "$$file" --output-dir=$(DEST_DIR); \
 	done
@@ -15,7 +15,7 @@ convert:
 # Clean up generated HTML files
 .PHONY: clean
 clean:
-	@rm -rf $(DEST_DIR)/*.html
+	@rm -rf $(DEST_DIR)/julia-*.html
 
 # Define default target
 .DEFAULT_GOAL := convert
